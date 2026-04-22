@@ -14,7 +14,7 @@
   --text:        #004233;
   --muted:       hsl(170,30%,40%);
   --border:      #e5e7eb;
-  --bg:          #f3f4f4;
+  --bg:          #F7F8F8;
   --card:        #ffffff;
   --r:           12px;
   --font:        "Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,system-ui,sans-serif;
@@ -23,24 +23,23 @@
 body{font-family:var(--font);color:var(--text);background:var(--bg);line-height:1.5}
 
 /* HERO */
-.hero{position:relative;min-height:780px;overflow:hidden;display:flex;align-items:flex-end;padding:80px 6% 200px}
+.hero{position:relative;min-height:628px;overflow:hidden;display:flex;align-items:center;padding:80px 6% 80px}
 .hero-bg{position:absolute;inset:0;background-color:#011a12}
-.hero-bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:0.85}
-.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,rgba(1,26,18,0.75) 0%,rgba(1,26,18,0.2) 60%)}
+.hero-bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,rgba(1,26,18,0.1) 0%,rgba(1,26,18,0.5) 55%,rgba(1,26,18,0.9) 100%)}
 .hero-content{position:relative;z-index:1;max-width:620px}
 .hero-logo{display:flex;align-items:baseline;gap:18px;margin-bottom:20px}
-.hero-logo img{height:64px;width:auto}
+.hero-logo img{height:85px;width:auto}
 .hero-logo-sub{font-size:13px;letter-spacing:.22em;color:rgba(255,255,255,.55);text-transform:uppercase;font-weight:400}
 .hero h1{font-size:clamp(28px,3.5vw,42px);font-weight:300;color:#fff;line-height:1.2;margin-bottom:16px;white-space:nowrap}
 .hero p{font-size:1.125rem;color:rgba(255,255,255,.7);line-height:1.65;margin-bottom:32px;max-width:440px}
 .hero-btns{display:flex;flex-wrap:wrap;gap:12px}
-.hero-fade{height:160px;background:linear-gradient(to bottom,transparent 0%,var(--bg) 100%);margin-top:-160px;position:relative;z-index:1}
+.hero-fade{position:relative;height:238px;margin-top:-238px;background:linear-gradient(to top,#F7F8F8 0%,rgba(247,248,248,0.8) 50%,transparent 100%);z-index:1}
 .btn-coral{display:inline-flex;align-items:center;padding:12px 28px;background:var(--coral);color:#fff;border:none;border-radius:8px;font-family:var(--font);font-size:15px;cursor:pointer;text-decoration:none;transition:background .15s,transform .1s}
 .btn-coral:hover{background:#e6725f}
 .btn-coral:active{transform:translateY(1px)}
 .btn-outline{display:inline-flex;align-items:center;padding:11px 24px;background:#D5FCE9;color:#004233;border:1.5px solid #D5FCE9;border-radius:8px;font-family:var(--font);font-size:15px;font-weight:400;cursor:pointer;text-decoration:none;transition:border-color .15s,background .15s}
 .btn-outline:hover{background:#c0f5da;border-color:#c0f5da}
-.hero-fade{height:80px;background:linear-gradient(to bottom,#011a12 0%,var(--bg) 100%);margin-top:-2px}
 
 /* LAYOUT */
 .wrap{max-width:1100px;margin:0 auto;padding:0 5% 64px}
@@ -146,8 +145,8 @@ footer{background:var(--green);border-top:1px solid rgba(255,255,255,.08);paddin
   <div class="hero-content">
     <div class="hero-logo">
       <img src="screamlogo-5Gucz3AP.png" alt="Scream"
-           style="height:64px;width:auto"
-           onerror="this.outerHTML='<span style=\'font-size:58px;font-weight:900;font-style:italic;text-transform:uppercase;color:#fff;letter-spacing:-2px;line-height:1;font-family:Georgia,serif\'>SCREAm</span>'"/>
+           style="height:85px;width:auto;filter:invert(1) brightness(10)"
+           onerror="this.outerHTML='<span style=\'font-size:72px;font-weight:900;font-style:italic;text-transform:uppercase;color:#fff;letter-spacing:-2px;line-height:1;font-family:Georgia,serif\'>SCREAm</span>'"/>
       <span class="hero-logo-sub">Innovationslabbet</span>
     </div>
     <h1>Här bygger vi framtidens verktyg</h1>
