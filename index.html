@@ -11,8 +11,8 @@
   --green-light: #D5FCE9;
   --coral:       #FF806F;
   --beige:       #FFF1E4;
-  --text:        #1a1a1a;
-  --muted:       #6b7280;
+  --text:        #004233;
+  --muted:       hsl(170,30%,40%);
   --border:      #e5e7eb;
   --bg:          #f3f4f4;
   --card:        #ffffff;
@@ -23,18 +23,18 @@
 body{font-family:var(--font);color:var(--text);background:var(--bg);line-height:1.5}
 
 /* HERO */
-.hero{position:relative;min-height:480px;overflow:hidden;display:flex;align-items:center;padding:80px 6% 130px}
+.hero{position:relative;min-height:620px;overflow:hidden;display:flex;align-items:flex-end;padding:80px 6% 160px}
 .hero-bg{position:absolute;inset:0;background-color:#011a12}
 .hero-bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:0.85}
 .hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,rgba(1,26,18,0.82) 0%,rgba(1,26,18,0.3) 60%)}
 .hero-content{position:relative;z-index:1;max-width:520px}
-.hero-logo{display:flex;align-items:baseline;gap:14px;margin-bottom:28px}
-.hero-logo img{height:38px;width:auto}
-.hero-logo-sub{font-size:11px;letter-spacing:.18em;color:rgba(255,255,255,.55);text-transform:uppercase;font-weight:400}
+.hero-logo{display:flex;align-items:baseline;gap:18px;margin-bottom:20px}
+.hero-logo img{height:64px;width:auto}
+.hero-logo-sub{font-size:13px;letter-spacing:.22em;color:rgba(255,255,255,.55);text-transform:uppercase;font-weight:400}
 .hero h1{font-size:clamp(22px,3.5vw,34px);font-weight:300;color:#fff;line-height:1.25;margin-bottom:16px}
 .hero p{font-size:15px;color:rgba(255,255,255,.7);line-height:1.65;margin-bottom:32px;max-width:400px}
 .hero-btns{display:flex;flex-wrap:wrap;gap:12px}
-.btn-coral{display:inline-flex;align-items:center;padding:12px 28px;background:var(--coral);color:#fff;border:none;border-radius:8px;font-family:var(--font);font-size:15px;font-weight:700;cursor:pointer;text-decoration:none;transition:background .15s,transform .1s}
+.btn-coral{display:inline-flex;align-items:center;padding:12px 28px;background:var(--coral);color:#fff;border:none;border-radius:8px;font-family:var(--font);font-size:15px;cursor:pointer;text-decoration:none;transition:background .15s,transform .1s}
 .btn-coral:hover{background:#e6725f}
 .btn-coral:active{transform:translateY(1px)}
 .btn-outline{display:inline-flex;align-items:center;padding:11px 24px;background:#D5FCE9;color:#004233;border:1.5px solid #D5FCE9;border-radius:8px;font-family:var(--font);font-size:15px;font-weight:400;cursor:pointer;text-decoration:none;transition:border-color .15s,background .15s}
@@ -145,8 +145,8 @@ footer{background:var(--green);border-top:1px solid rgba(255,255,255,.08);paddin
   <div class="hero-content">
     <div class="hero-logo">
       <img src="screamlogo-5Gucz3AP.png" alt="Scream"
-           style="height:38px;width:auto"
-           onerror="this.outerHTML='<span style=\'font-size:38px;font-weight:900;font-style:italic;text-transform:uppercase;color:#fff;letter-spacing:-2px;line-height:1;font-family:Georgia,serif\'>SCREAm</span>'"/>
+           style="height:64px;width:auto"
+           onerror="this.outerHTML='<span style=\'font-size:58px;font-weight:900;font-style:italic;text-transform:uppercase;color:#fff;letter-spacing:-2px;line-height:1;font-family:Georgia,serif\'>SCREAm</span>'"/>
       <span class="hero-logo-sub">Innovationslabbet</span>
     </div>
     <h1>Här bygger vi framtidens verktyg</h1>
