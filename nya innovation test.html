@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Scream Innovationslabbet – AI-verktyg</title>
+<meta name="description" content="En kurerad samling AI-verktyg och innovativa hjälpmedel – byggda för att accelerera strategi, kreativitet och prestation."/>
+<style>
+:root {
+  --green:       #004233;
+  --green-light: #D5FCE9;
+  --coral:       #FF806F;
+  --beige:       #FFF1E4;
+  --text:        #1a1a1a;
+  --muted:       #6b7280;
+  --border:      #e5e7eb;
+  --bg:          #f3f4f4;
+  --card:        #ffffff;
+  --r:           12px;
+  --font:        "Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,system-ui,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font);color:var(--text);background:var(--bg);line-height:1.5}
+
+/* HERO */
+.hero{position:relative;min-height:480px;overflow:hidden;display:flex;align-items:center;padding:80px 6% 130px}
+.hero-bg{position:absolute;inset:0;background-color:#011a12}
+.hero-bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:0.85}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,rgba(1,26,18,0.82) 0%,rgba(1,26,18,0.3) 60%)}
+.hero-content{position:relative;z-index:1;max-width:520px}
+.hero-logo{display:flex;align-items:baseline;gap:14px;margin-bottom:28px}
+.hero-logo img{height:38px;width:auto}
+.hero-logo-sub{font-size:11px;letter-spacing:.18em;color:rgba(255,255,255,.55);text-transform:uppercase;font-weight:400}
+.hero h1{font-size:clamp(22px,3.5vw,34px);font-weight:300;color:#fff;line-height:1.25;margin-bottom:16px}
+.hero p{font-size:15px;color:rgba(255,255,255,.7);line-height:1.65;margin-bottom:32px;max-width:400px}
+.hero-btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn-coral{display:inline-flex;align-items:center;padding:12px 28px;background:var(--coral);color:#fff;border:none;border-radius:8px;font-family:var(--font);font-size:15px;font-weight:700;cursor:pointer;text-decoration:none;transition:background .15s,transform .1s}
+.btn-coral:hover{background:#e6725f}
+.btn-coral:active{transform:translateY(1px)}
+.btn-outline{display:inline-flex;align-items:center;padding:11px 24px;background:#D5FCE9;color:#004233;border:1.5px solid #D5FCE9;border-radius:8px;font-family:var(--font);font-size:15px;font-weight:400;cursor:pointer;text-decoration:none;transition:border-color .15s,background .15s}
+.btn-outline:hover{background:#c0f5da;border-color:#c0f5da}
+.hero-fade{height:80px;background:linear-gradient(to bottom,#011a12 0%,var(--bg) 100%);margin-top:-2px}
+
+/* LAYOUT */
+.wrap{max-width:1100px;margin:0 auto;padding:0 5% 64px}
+.sec-head{text-align:center;margin-bottom:40px}
+.sec-head h2{font-size:clamp(20px,2.8vw,28px);font-weight:700;margin-bottom:8px;letter-spacing:-.3px}
+.sec-head p{font-size:15px;color:var(--muted)}
+
+/* KATEGORI-GRID */
+.cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:64px}
+.cat-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:28px 16px 24px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;cursor:pointer;transition:box-shadow .2s,transform .15s;text-align:center;user-select:none;min-height:130px}
+.cat-card:hover{box-shadow:0 4px 20px rgba(0,66,51,.1);transform:translateY(-2px)}
+.cat-icon{width:46px;height:46px;background:var(--bg);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--green)}
+.cat-icon svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+/* FIX: Lucida Grande har bara 400 och 700 — 500 faller tillbaka på 400 (för tunt) */
+.cat-label{font-size:13px;font-weight:700;color:var(--text);line-height:1.35}
+
+/* FILTER PILLS */
+.filter-wrap{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px;justify-content:center}
+.pill{padding:7px 16px;border-radius:999px;border:1.5px solid var(--green);background:transparent;color:var(--green);font-family:var(--font);font-size:13px;font-weight:700;cursor:pointer;transition:background .15s,color .15s;white-space:nowrap}
+.pill:hover{background:rgba(0,66,51,.06)}
+.pill.active{background:var(--green);color:#fff}
+.pill-foundation{padding:5px 14px;border-radius:999px;border:1.5px solid hsl(35,99%,46%);background:hsla(35,99%,46%,0.5);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;height:34px;transition:background .15s,border-color .15s}
+.pill-foundation img{height:11px;width:auto;display:block}
+.pill-foundation:hover{background:hsla(35,99%,46%,0.65)}
+.pill-foundation.active{background:hsl(35,99%,46%);border-color:hsl(35,99%,46%)}
+
+/* TOOL COUNT */
+.tools-meta{text-align:center;margin-bottom:24px}
+.tools-meta h2{font-size:clamp(20px,2.8vw,26px);font-weight:700;margin-bottom:6px}
+.tools-meta p{font-size:14px;color:var(--muted)}
+
+/* TOOL CARDS */
+.tools-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.tool-card{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--border);border-radius:var(--r);padding:20px;display:flex;flex-direction:column;gap:10px;position:relative;transition:box-shadow .2s,transform .15s;text-decoration:none;color:inherit}
+.tool-card[href]:hover{box-shadow:0 4px 20px rgba(0,66,51,.1);transform:translateY(-2px)}
+.tool-card:not([href]){opacity:.65;cursor:default}
+.tool-card:not([href])::after{content:"Kommer snart";position:absolute;top:12px;right:12px;background:rgba(0,0,0,.06);color:#555;font-size:10px;font-weight:700;letter-spacing:.02em;padding:3px 9px;border-radius:999px}
+.tool-card.hidden{display:none}
+.tool-top{display:flex;align-items:flex-start;gap:12px}
+.tool-icon{width:36px;height:36px;flex-shrink:0;background:var(--bg);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--green)}
+.tool-icon svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.tool-name{font-size:15px;font-weight:700;color:var(--text);padding-right:80px;line-height:1.3;margin-top:2px}
+.tool-desc{font-size:13px;color:var(--muted);line-height:1.55}
+.badge{display:inline-block;padding:3px 10px;border-radius:999px;font-size:11px;font-weight:700;margin-top:auto;width:fit-content}
+.badge-mint {background:var(--green-light);color:var(--green)}
+.badge-coral{background:#FFE8E5;color:#993C1D}
+.badge-beige{background:var(--beige);color:#7a5c3a}
+.border-mint {border-left-color:var(--green)}
+.border-coral{border-left-color:var(--coral)}
+.border-beige{border-left-color:#e8c89a}
+
+/* SÅ BYGGER VI */
+.principles{background:var(--green);padding:80px 6%}
+.principles .sec-head h2{color:#fff}
+.principles .sec-head p{color:rgba(255,255,255,.65)}
+.principles-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.p-card{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:var(--r);padding:28px 22px 24px;display:flex;flex-direction:column;gap:14px}
+.p-card-icon{color:var(--coral)}
+.p-card-icon svg{width:28px;height:28px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.p-card h3{font-size:16px;font-weight:700;color:#fff;line-height:1.3}
+.p-card p{font-size:14px;color:rgba(255,255,255,.7);line-height:1.6}
+
+/* FOOTER */
+footer{background:var(--green);border-top:1px solid rgba(255,255,255,.08);padding:48px 6% 32px}
+.footer-inner{max-width:1100px;margin:0 auto}
+.footer-logo{display:flex;align-items:baseline;gap:10px;margin-bottom:10px}
+.footer-logo img{height:28px;width:auto;filter:brightness(0) invert(1)}
+.footer-logo-sub{font-size:10px;letter-spacing:.16em;color:rgba(255,255,255,.45);text-transform:uppercase}
+.footer-desc{font-size:13px;color:rgba(255,255,255,.55);max-width:360px;line-height:1.6;margin-bottom:32px}
+.footer-copy{font-size:12px;color:rgba(255,255,255,.35);border-top:1px solid rgba(255,255,255,.1);padding-top:20px}
+
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center;padding:1rem;opacity:0;visibility:hidden;transition:opacity .2s,visibility .2s}
+.modal-overlay.open{opacity:1;visibility:visible}
+.modal{background:#fff;border-radius:16px;padding:2rem;max-width:32rem;width:100%;max-height:90vh;overflow-y:auto;position:relative;transform:scale(.96);transition:transform .2s}
+.modal-overlay.open .modal{transform:scale(1)}
+.modal-close{position:absolute;top:12px;right:12px;width:36px;height:36px;background:none;border:none;cursor:pointer;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#888;transition:background .15s}
+.modal-close:hover{background:#f3f4f6;color:#111}
+.modal h2{font-size:22px;font-weight:700;margin-bottom:6px}
+.modal-sub{color:#666;font-size:15px;margin-bottom:24px;line-height:1.55}
+.field{margin-bottom:14px}
+.field label{display:block;font-size:13px;font-weight:700;margin-bottom:5px}
+.field input,.field textarea,.field select{width:100%;padding:10px 12px;border:1.5px solid var(--border);border-radius:8px;font-family:var(--font);font-size:15px;color:var(--text);transition:border-color .15s;background:#fff}
+.field textarea{resize:vertical;min-height:96px}
+.field input:focus,.field textarea:focus,.field select:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 3px rgba(0,66,51,.1)}
+.btn-submit{width:100%;padding:14px;background:var(--coral);color:#fff;border:none;border-radius:8px;font-family:var(--font);font-size:15px;font-weight:700;cursor:pointer;margin-top:4px;transition:background .15s}
+.btn-submit:hover{background:#e6725f}
+.confirm{text-align:center;padding:40px 20px;display:none}
+.confirm-icon{width:56px;height:56px;background:var(--green-light);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;color:var(--green)}
+.confirm-text{font-size:18px;font-weight:700;color:var(--green)}
+.empty-state{grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--muted);font-size:15px;display:none}
+
+/* RESPONSIVE */
+@media(max-width:900px){.tools-grid{grid-template-columns:repeat(2,1fr)}.principles-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.cat-grid{grid-template-columns:repeat(2,1fr)}.tools-grid{grid-template-columns:1fr}.principles-grid{grid-template-columns:1fr}.hero{padding:60px 5% 100px}}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"><img src="hero-bg-BtJEBpVR.jpg" alt=""/></div>
+  <div class="hero-content">
+    <div class="hero-logo">
+      <img src="screamlogo-5Gucz3AP.png" alt="Scream"
+           style="height:38px;width:auto"
+           onerror="this.outerHTML='<span style=\'font-size:38px;font-weight:900;font-style:italic;text-transform:uppercase;color:#fff;letter-spacing:-2px;line-height:1;font-family:Georgia,serif\'>SCREAm</span>'"/>
+      <span class="hero-logo-sub">Innovationslabbet</span>
+    </div>
+    <h1>Här bygger vi framtidens verktyg</h1>
+    <p>En kurerad samling AI-verktyg och innovativa hjälpmedel – byggda för att accelerera strategi, kreativitet och prestation.</p>
+    <div class="hero-btns">
+      <a href="#verktyg" class="btn-coral">Utforska verktyg</a>
+      <button class="btn-outline" onclick="openModal()">Min idé för innovation</button>
+    </div>
+  </div>
+</section>
+<div class="hero-fade"></div>
+
+<!-- INNOVATIONSOMRÅDEN -->
+<div class="wrap">
+  <div class="sec-head">
+    <h2>Innovationsområden</h2>
+    <p>Områden för intelligent transformation</p>
+  </div>
+  <div class="cat-grid" id="cat-grid"></div>
+</div>
+
+<!-- VERKTYG -->
+<div class="wrap" id="verktyg">
+  <div class="tools-meta">
+    <h2>Våra verktyg och hjälpmedel</h2>
+    <p id="count-text"></p>
+  </div>
+  <div class="filter-wrap" id="filter-wrap"></div>
+  <div class="tools-grid" id="tools-grid"></div>
+</div>
+
+<!-- SÅ BYGGER VI -->
+<section class="principles">
+  <div class="sec-head">
+    <h2>Så bygger vi</h2>
+    <p>Våra principer för att skapa intelligenta verktyg</p>
+  </div>
+  <div class="principles-grid">
+    <div class="p-card">
+      <div class="p-card-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+      <h3>Människa + AI i samverkan</h3>
+      <p>Varje verktyg är byggt med mänsklig insyn som grund. AI förstärker expertisen – den ersätter den aldrig.</p>
+    </div>
+    <div class="p-card">
+      <div class="p-card-icon"><svg viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/></svg></div>
+      <h3>Experimentkultur</h3>
+      <p>Vi prototypar snabbt, testar noggrant och itererar utifrån verkliga resultat.</p>
+    </div>
+    <div class="p-card">
+      <div class="p-card-icon"><svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg></div>
+      <h3>Kontinuerlig iteration</h3>
+      <p>Löpande förbättringscykler säkerställer att våra verktyg utvecklas i takt med marknadens behov.</p>
+    </div>
+    <div class="p-card">
+      <div class="p-card-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+      <h3>Ansvarsfull innovation</h3>
+      <p>Etik, transparens och regelefterlevnad är inbyggt i varje verktyg från dag ett.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <img src="screamlogo-5Gucz3AP.png" alt="Scream"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/>
+      <span style="display:none;font-size:24px;font-weight:900;font-style:italic;text-transform:uppercase;color:#fff;letter-spacing:-1px">Scream</span>
+      <span class="footer-logo-sub">Innovationslabbet</span>
+    </div>
+    <p class="footer-desc">Vi bygger ansvarsfulla AI-verktyg som förstärker mänsklig intelligens inom strategi, kreativitet och prestation.</p>
+    <p class="footer-copy">© 2026 Scream Innovationslabbet. Alla rättigheter förbehållna.</p>
+  </div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()" aria-label="Stäng">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+    </button>
+    <div id="modal-form-wrap">
+      <h2 id="modal-title">Dela din idé</h2>
+      <p class="modal-sub">Har du en idé för ett nytt AI-verktyg eller innovation? Vi vill gärna höra den.</p>
+      <form id="idea-form" novalidate>
+        <div class="field"><label for="f-name">Ditt namn</label><input type="text" id="f-name" name="name" required autocomplete="name"/></div>
+        <div class="field"><label for="f-email">Din e-post</label><input type="email" id="f-email" name="email" required autocomplete="email"/></div>
+        <div class="field"><label for="f-desc">Beskriv din idé</label><textarea id="f-desc" name="description" rows="5" required></textarea></div>
+        <div class="field">
+          <label for="f-cat">Innovationsområde</label>
+          <select id="f-cat" name="category" required><option value="">Välj område…</option></select>
+        </div>
+        <button type="submit" class="btn-submit">Skicka in idé</button>
+      </form>
+    </div>
+    <div class="confirm" id="modal-confirm">
+      <div class="confirm-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+      <p class="confirm-text">Tack! Vi återkommer snart.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   KATEGORIER
+   ============================================================ */
+const CATEGORIES = [
+  { id:"marknadsdata", label:"Marknads- & Omvärldsdata",  icon:"chart"    },
+  { id:"planering",    label:"Planering & Prognos",        icon:"trending" },
+  { id:"kampanj",      label:"Kampanjaktivering",          icon:"zap"      },
+  { id:"innehall",     label:"Innehåll & Kreativ",         icon:"bulb"     },
+  { id:"kundinsikter", label:"Kund- & Kanalinsikter",      icon:"heart"    },
+  { id:"interna",      label:"Interna system & Styrning",  icon:"settings" },
+  { id:"ai-appar",     label:"AI-appar",                   icon:"target"   },
+  { id:"kundspecifik", label:"Kundspecifik utveckling",    icon:"book"     },
+  { id:"foundation",   label:"Foundation",                  icon:"foundation" },
+];
+
+/* ============================================================
+   VERKTYG
+   ──────────────────────────────────────────────────────────
+   Lägg till verktyg: kopiera ett objekt, fyll i fälten.
+     url: null  →  "Kommer snart"
+     url: "https://..."  →  klickbar länk
+   Teman: "mint" | "coral" | "beige"
+   Ikoner: se ICONS-objektet nedan
+   ============================================================ */
+const TOOLS = [
+
+  /* ── Marknads- & Omvärldsdata ── */
+  { name:"WARC",                     desc:"Tillgång till global marknads- och annonsdata från WARC.",                             category:"marknadsdata", url:"https://www.warc.com/en",                                                icon:"globe",    theme:"mint"  },
+  { name:"IRM",                      desc:"Investerings- och reklammarknadsdata.",                                                category:"marknadsdata", url:"https://www.irm-media.se/",                                      icon:"list",     theme:"mint"  },
+  { name:"Sifo RM",                  desc:"Räckviddsmätning och mediedata från Kantar/Sifo.",                                    category:"marknadsdata", url:"https://rm.tns-sifo.se/rm_spa.html#",                           icon:"list",     theme:"mint"  },
+  { name:"Trendrapporterna",         desc:"Sammanställda trendrapporter för omvärldsbevakning.",                                 category:"marknadsdata", url:null,                                                             icon:"trending", theme:"mint"  },
+  { name:"SCB Befolkningsstatistik", desc:"Hämta målgruppsstatistik direkt från SCB.",                                          category:"marknadsdata", url:"https://nilshellscream.github.io/scb-befolkningsstatistik/",     icon:"users",    theme:"mint"  },
+  { name:"Google AdsCopy Export",    desc:"Hämtar annonstext från Google Ads Transparency Center & exporterar till Excel.",     category:"marknadsdata", url:"https://ads-fetcher.onrender.com/widget",                        icon:"search",   theme:"mint"  },
+  { name:"Behavioural Ad Modelling", desc:"Beteendebaserad modellering för annonsoptimering.",                                  category:"marknadsdata", url:null,                                                             icon:"globe",    theme:"mint"  },
+
+  /* ── Planering & Prognos ── */
+  { name:"Event-kalendern",          desc:"Eventkalender för kommande event att använda i medierådgivning.",                   category:"planering",    url:"https://eventcal.scream.se/",                                    icon:"calendar", theme:"beige" },
+  { name:"Budgeting tool",           desc:"Verktyg för budgetplanering och fördelning.",                                        category:"planering",    url:null,                                                             icon:"budget",   theme:"beige" },
+  { name:"Budgetkollen",             desc:"Realtidsöversikt av kampanjbudgetar.",                                               category:"planering",    url:null,                                                             icon:"budget",   theme:"beige" },
+  { name:"Reach Planner",            desc:"Beräkna räckvidd för mediakampanjer över flera kanaler.",                           category:"planering",    url:"https://nilshellscream.github.io/Scream-Reach-Planner/",         icon:"target",   theme:"beige" },
+  { name:"Meta Reach Planner",       desc:"Hämta räckvidsdata för Meta direkt i appen.",                                       category:"planering",    url:"https://nilshellscream.github.io/scream-meta-reachplanner/",    icon:"target",   theme:"beige" },
+  { name:"Kolsquare",                desc:"Influencer-plattform för planering och analys.",                                    category:"planering",    url:"https://www.kolsquare.com/en/influencer-marketing-platform",     icon:"users",    theme:"beige" },
+  { name:"Agora Pulse",              desc:"Verktyg för social media management och rapportering.",                               category:"planering",    url:"https://www.agorapulse.com/",                                    icon:"chart",    theme:"beige" },
+
+  /* ── Kampanjaktivering ── */
+  { name:"BudgetGuardian",           desc:"Chrome-extension för att begränsa publicering av Meta-kampanjer med daglig budget.",category:"kampanj",      url:null,                                                             icon:"shield",   theme:"coral" },
+  { name:"Meta Preview link tool",   desc:"Hämta korrlänar i bulk och exportera.",                                             category:"kampanj",      url:"https://nilshellscream.github.io/meta-preview-tool/",            icon:"link",     theme:"coral" },
+  { name:"Annonsgranskare",          desc:"AI-driven granskning av annonsmaterial.",                                           category:"kampanj",      url:"https://sem.scream.se/",                                         icon:"shield",   theme:"coral" },
+
+  /* ── Innehåll & Kreativ ── */
+  { name:"Annonscopy",               desc:"Generera annonstexter med AI-stöd.",                                                category:"innehall",     url:null,                                                             icon:"bulb",     theme:"beige" },
+  { name:"Neurons",                  desc:"AI-driven kreativ analys och optimering av annonsmaterial.",                         category:"innehall",     url:"https://app.neuronsinc.com/",                                    icon:"zap",      theme:"beige" },
+
+  /* ── Interna system & Styrning ── */
+  { name:"Sync",                          desc:"Resursplaneringsverktyg för interna team.",                                    category:"interna",      url:"https://sync.scream.se/#/",                                      icon:"refresh",  theme:"mint"  },
+  { name:"Wellfish Hållbarhetssystem",    desc:"System för hållbarhetsrapportering och uppföljning.",                         category:"interna",      url:"https://wellfish.se/",                                           icon:"leaf",     theme:"mint"  },
+  { name:"CheckOut",                      desc:"Diskussionsunderlag för Kundteams feedback/workshop.",                        category:"interna",      url:"https://claude.ai/artifacts/latest/428b8610-05de-4a85-b426-53ce24292b20", icon:"chat", theme:"mint" },
+  { name:"TTPA Checker",                  desc:"Verktyg för att ställa frågor kring TTPA/politisk annonsering.",             category:"interna",      url:"https://claude.ai/artifacts/latest/162e9280-0f51-4a36-bf19-0237614cc342", icon:"check", theme:"mint" },
+
+  /* ── AI-appar ── */
+  { name:"InfluenceScore",           desc:"Verktyg för att bedöma influencers.",                                               category:"ai-appar",     url:"https://emc-earned-media-score.vercel.app/",                     icon:"star",     theme:"mint"  },
+
+  /* ── Kundspecifik utveckling ── */
+  { name:"Coop store list",          desc:"Interaktiv app för att filtrera bland 800+ Coop-butiker.",                          category:"kundspecifik", url:"https://nilshellscream.github.io/Coop-store-list/",              icon:"store",    theme:"coral" },
+];
+
+/* SVG-ikoner */
+const ICONS = {
+  chart:    `<polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>`,
+  trending: `<polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/>`,
+  zap:      `<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>`,
+  bulb:     `<line x1="9" y1="18" x2="15" y2="18"/><line x1="10" y1="22" x2="14" y2="22"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"/>`,
+  heart:    `<path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>`,
+  settings: `<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>`,
+  target:   `<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>`,
+  book:     `<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>`,
+  globe:    `<circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>`,
+  list:     `<line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/>`,
+  calendar: `<rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>`,
+  budget:   `<rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>`,
+  users:    `<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>`,
+  search:   `<circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>`,
+  shield:   `<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>`,
+  link:     `<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>`,
+  refresh:  `<polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>`,
+  leaf:     `<path d="M17 8C8 10 5.9 16.17 3.82 19.68a2 2 0 0 0 .18 2.32c.56.54 1.43.54 2 0L22 6"/><path d="M3.82 19.68C5.23 17.5 8 14 12 12"/>`,
+  chat:     `<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>`,
+  check:    `<polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>`,
+  star:     `<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>`,
+  store:    `<path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/>`,
+};
+
+function ico(k,s=22){const d=ICONS[k]||ICONS.globe;return `<svg viewBox="0 0 24 24" width="${s}" height="${s}" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">${d}</svg>`;}
+
+function buildCats(){
+  document.getElementById('cat-grid').innerHTML=CATEGORIES.map(c=>{
+    if(c.id==='foundation'){
+      return `<div class="cat-card" onclick="filterBy('foundation')" style="border-top:3px solid hsl(35,99%,46%);background:hsl(35,99%,46%)">
+        <img src="https://images.squarespace-cdn.com/content/v1/62bd5e3e9e995a0965dfe1ce/3ad114f0-4173-45b8-8782-0fc6ca24648d/Foundation_vit.png" alt="Foundation" style="height:15px;width:auto"/>
+      </div>`;
+    }
+    return `<div class="cat-card" onclick="filterBy('${c.id}')">
+      <div class="cat-icon">${ico(c.icon)}</div>
+      <span class="cat-label">${c.label}</span>
+    </div>`;
+  }).join('');
+}
+
+function buildFilters(){
+  const pills = [`<button class="pill active" data-f="all" onclick="filterBy('all')">Alla</button>`]
+    .concat(CATEGORIES.map(c=>{
+      if(c.id==='foundation'){
+        return `<button class="pill-foundation" data-f="foundation" onclick="filterBy('foundation')"><img src="https://images.squarespace-cdn.com/content/v1/62bd5e3e9e995a0965dfe1ce/3ad114f0-4173-45b8-8782-0fc6ca24648d/Foundation_vit.png" alt="Foundation"/></button>`;
+      }
+      return `<button class="pill" data-f="${c.id}" onclick="filterBy('${c.id}')">${c.label}</button>`;
+    }));
+  document.getElementById('filter-wrap').innerHTML = pills.join('');
+}
+
+function buildTools(){
+  document.getElementById('tools-grid').innerHTML=TOOLS.map(t=>{
+    const tag=t.url?'a':'div';
+    const href=t.url?`href="${t.url}" target="_blank" rel="noopener"`:'';
+    const bc=t.theme==='coral'?'badge-coral':t.theme==='beige'?'badge-beige':'badge-mint';
+    const bl=t.theme==='coral'?'border-coral':t.theme==='beige'?'border-beige':'border-mint';
+    const cat=CATEGORIES.find(c=>c.id===t.category)?.label||t.category;
+    return `<${tag} class="tool-card ${bl}" ${href} data-cat="${t.category}">
+      <div class="tool-top"><div class="tool-icon">${ico(t.icon,18)}</div><div class="tool-name">${t.name}</div></div>
+      <p class="tool-desc">${t.desc}</p>
+      <span class="badge ${bc}">${cat}</span>
+    </${tag}>`;
+  }).join('')+`<div class="empty-state" id="empty">Inga verktyg i den här kategorin.</div>`;
+}
+
+let active='all';
+function filterBy(id){
+  active=id;
+  document.querySelectorAll('.pill').forEach(p=>p.classList.toggle('active',p.dataset.f===id));
+  document.querySelectorAll('.pill-foundation').forEach(p=>p.classList.toggle('active',p.dataset.f===id));
+  let n=0;
+  document.querySelectorAll('.tool-card').forEach(c=>{
+    const show=id==='all'||c.dataset.cat===id;
+    c.classList.toggle('hidden',!show);
+    if(show)n++;
+  });
+  const empty=document.getElementById('empty');
+  if(empty)empty.style.display=n===0?'block':'none';
+  const lbl=id==='all'?`${CATEGORIES.length} innovationsområden`:CATEGORIES.find(c=>c.id===id)?.label||'';
+  document.getElementById('count-text').textContent=`${n} specialiserade verktyg inom ${lbl}`;
+}
+
+function openModal(){
+  document.getElementById('modal').classList.add('open');
+  document.body.style.overflow='hidden';
+  const sel=document.getElementById('f-cat');
+  if(sel.options.length<=1)CATEGORIES.forEach(c=>{const o=document.createElement('option');o.value=c.id;o.textContent=c.label;sel.appendChild(o);});
+}
+function closeModal(){
+  document.getElementById('modal').classList.remove('open');
+  document.body.style.overflow='';
+  setTimeout(()=>{
+    document.getElementById('idea-form').reset();
+    document.getElementById('idea-form').style.display='';
+    document.querySelector('.modal h2').style.display='';
+    document.querySelector('.modal-sub').style.display='';
+    document.getElementById('modal-confirm').style.display='none';
+  },220);
+}
+document.getElementById('modal').addEventListener('click',e=>{if(e.target===e.currentTarget)closeModal();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+
+document.getElementById('idea-form').addEventListener('submit',async e=>{
+  e.preventDefault();
+  const form=e.target;
+  if(!form.checkValidity()){form.reportValidity();return;}
+  const btn=form.querySelector('.btn-submit');
+  btn.disabled=true;btn.textContent='Skickar…';
+  try{
+    await fetch('https://formsubmit.co/ajax/nils.hellquist@scream.se',{
+      method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify({_subject:'Ny idé: '+form.name.value,_template:'table',_captcha:'false',
+        Namn:form.name.value,Epost:form.email.value,Omrade:form.category.value,Ide:form.description.value})
+    });
+  }catch(err){console.warn(err);}
+  form.style.display='none';
+  document.querySelector('.modal h2').style.display='none';
+  document.querySelector('.modal-sub').style.display='none';
+  document.getElementById('modal-confirm').style.display='block';
+  setTimeout(closeModal,2200);
+});
+
+buildCats();buildFilters();buildTools();filterBy('all');
+</script>
+</body>
+</html>
