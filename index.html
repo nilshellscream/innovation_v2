@@ -86,9 +86,11 @@ body{font-family:var(--font);color:var(--text);background:var(--bg);line-height:
 .badge-mint {background:var(--green-light);color:var(--green)}
 .badge-coral{background:#FFE8E5;color:#993C1D}
 .badge-beige{background:var(--beige);color:#7a5c3a}
+.badge-foundation{background:hsla(35,99%,46%,0.15);color:hsl(35,99%,35%)}
 .border-mint {border-left-color:var(--green)}
 .border-coral{border-left-color:var(--coral)}
 .border-beige{border-left-color:#e8c89a}
+.border-foundation{border-left-color:hsl(35,99%,46%)}
 
 /* SÅ BYGGER VI */
 .principles{background:var(--green);padding:80px 6%}
@@ -129,7 +131,8 @@ footer{background:var(--green);border-top:1px solid rgba(255,255,255,.08);paddin
 .confirm{text-align:center;padding:40px 20px;display:none}
 .confirm-icon{width:56px;height:56px;background:var(--green-light);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;color:var(--green)}
 .confirm-text{font-size:18px;font-weight:700;color:var(--green)}
-.empty-state{grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--muted);font-size:15px;display:none}
+.badge-extra{display:inline-flex;align-items:center;padding:3px 8px;border-radius:999px;font-size:11px;font-weight:700;background:rgba(0,66,51,.08);color:var(--green);margin-left:4px;cursor:default}
+
 
 /* RESPONSIVE */
 @media(max-width:900px){.tools-grid{grid-template-columns:repeat(2,1fr)}.principles-grid{grid-template-columns:repeat(2,1fr)}}
@@ -254,7 +257,7 @@ footer{background:var(--green);border-top:1px solid rgba(255,255,255,.08);paddin
 const CATEGORIES = [
   { id:"marknadsdata", label:"Marknads- & Omvärldsdata",  icon:"chart"    },
   { id:"planering",    label:"Planering & Prognos",        icon:"trending" },
-  { id:"kampanj",      label:"Kampanjaktivering",          icon:"zap"      },
+  { id:"kampanj",      label:"Kampanjhantering",           icon:"zap"      },
   { id:"innehall",     label:"Innehåll & Kreativ",         icon:"bulb"     },
   { id:"kundinsikter", label:"Kund- & Kanalinsikter",      icon:"heart"    },
   { id:"interna",      label:"Interna system & Styrning",  icon:"settings" },
@@ -367,17 +370,25 @@ function buildFilters(){
   document.getElementById('filter-wrap').innerHTML = pills.join('');
 }
 
+function cats(t){return Array.isArray(t.category)?t.category:(t.category?[t.category]:[]);}
+
 function buildTools(){
   document.getElementById('tools-grid').innerHTML=TOOLS.map(t=>{
     const tag=t.url?'a':'div';
     const href=t.url?`href="${t.url}" target="_blank" rel="noopener"`:'';
-    const bc=t.theme==='coral'?'badge-coral':t.theme==='beige'?'badge-beige':'badge-mint';
-    const bl=t.theme==='coral'?'border-coral':t.theme==='beige'?'border-beige':'border-mint';
-    const cat=CATEGORIES.find(c=>c.id===t.category)?.label||t.category;
-    return `<${tag} class="tool-card ${bl}" ${href} data-cat="${t.category}">
+    const bc=t.theme==='coral'?'badge-coral':t.theme==='beige'?'badge-beige':t.theme==='foundation'?'badge-foundation':'badge-mint';
+    const bl=t.theme==='coral'?'border-coral':t.theme==='beige'?'border-beige':t.theme==='foundation'?'border-foundation':'border-mint';
+    const catIds=cats(t);
+    const primaryLabel=CATEGORIES.find(c=>c.id===catIds[0])?.label||catIds[0]||'';
+    const extraCount=catIds.length-1;
+    const extraBadge=extraCount>0?`<span class="badge-extra">+${extraCount}</span>`:'';
+    const dataCat=catIds.join(',');
+    return `<${tag} class="tool-card ${bl}" ${href} data-cat="${dataCat}">
       <div class="tool-top"><div class="tool-icon">${ico(t.icon,18)}</div><div class="tool-name">${t.name}</div></div>
       <p class="tool-desc">${t.desc}</p>
-      <span class="badge ${bc}">${cat}</span>
+      <div style="display:flex;align-items:center;margin-top:auto">
+        <span class="badge ${bc}">${primaryLabel}</span>${extraBadge}
+      </div>
     </${tag}>`;
   }).join('')+`<div class="empty-state" id="empty">Inga verktyg i den här kategorin.</div>`;
 }
@@ -389,7 +400,8 @@ function filterBy(id){
   document.querySelectorAll('.pill-foundation').forEach(p=>p.classList.toggle('active',p.dataset.f===id));
   let n=0;
   document.querySelectorAll('.tool-card').forEach(c=>{
-    const show=id==='all'||c.dataset.cat===id;
+    const cardCats=c.dataset.cat.split(',');
+    const show=id==='all'||cardCats.includes(id);
     c.classList.toggle('hidden',!show);
     if(show)n++;
   });
