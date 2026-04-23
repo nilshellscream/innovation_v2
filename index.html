@@ -282,39 +282,40 @@ const TOOLS = [
   { name:"IRM",                      desc:"Investerings- och reklammarknadsdata.",                                                category:"marknadsdata", url:"https://www.irm-media.se/",                                      icon:"list",     theme:"mint"  },
   { name:"Sifo RM",                  desc:"Räckviddsmätning och mediedata från Kantar/Sifo.",                                    category:"marknadsdata", url:"https://rm.tns-sifo.se/rm_spa.html#",                           icon:"list",     theme:"mint"  },
   { name:"Trendrapporterna",         desc:"Sammanställda trendrapporter för omvärldsbevakning.",                                 category:"marknadsdata", url:null,                                                             icon:"trending", theme:"mint"  },
-  { name:"SCB Befolkningsstatistik", desc:"Hämta målgruppsstatistik direkt från SCB.",                                          category:"marknadsdata", url:"https://nilshellscream.github.io/scb-befolkningsstatistik/",     icon:"users",    theme:"mint"  },
-  { name:"Google AdsCopy Export",    desc:"Hämtar annonstext från Google Ads Transparency Center & exporterar till Excel.",     category:"marknadsdata", url:"https://ads-fetcher.onrender.com/widget",                        icon:"search",   theme:"mint"  },
+  { name:"SCB Befolkningsstatistik", desc:"Hämta målgruppsstatistik direkt från SCB.",                                          category:["marknadsdata","ai-appar"], url:"https://nilshellscream.github.io/scb-befolkningsstatistik/",     icon:"users",    theme:"mint"  },
+  { name:"Google AdsCopy Export",    desc:"Hämtar annonstext från Google Ads Transparency Center & exporterar till Excel.",     category:["marknadsdata","foundation","ai-appar"], url:"https://ads-fetcher.onrender.com/widget",                        icon:"search",   theme:"mint"  },
   { name:"Behavioural Ad Modelling", desc:"Beteendebaserad modellering för annonsoptimering.",                                  category:"marknadsdata", url:null,                                                             icon:"globe",    theme:"mint"  },
 
   /* ── Planering & Prognos ── */
-  { name:"Event-kalendern",          desc:"Eventkalender för kommande event att använda i medierådgivning.",                   category:"planering",    url:"https://eventcal.scream.se/",                                    icon:"calendar", theme:"beige" },
+  { name:"Event-kalendern",          desc:"Eventkalender för kommande event att använda i medierådgivning.",                   category:["planering","ai-appar"],   url:"https://eventcal.scream.se/",                                    icon:"calendar", theme:"beige" },
   { name:"Budgeting tool",           desc:"Verktyg för budgetplanering och fördelning.",                                        category:"planering",    url:null,                                                             icon:"budget",   theme:"beige" },
-  { name:"Budgetkollen",             desc:"Realtidsöversikt av kampanjbudgetar.",                                               category:"planering",    url:null,                                                             icon:"budget",   theme:"beige" },
-  { name:"Reach Planner",            desc:"Beräkna räckvidd för mediakampanjer över flera kanaler.",                           category:"planering",    url:"https://nilshellscream.github.io/Scream-Reach-Planner/",         icon:"target",   theme:"beige" },
-  { name:"Meta Reach Planner",       desc:"Hämta räckvidsdata för Meta direkt i appen.",                                       category:"planering",    url:"https://nilshellscream.github.io/scream-meta-reachplanner/",    icon:"target",   theme:"beige" },
-  { name:"Kolsquare",                desc:"Influencer-plattform för planering och analys.",                                    category:"planering",    url:"https://www.kolsquare.com/en/influencer-marketing-platform",     icon:"users",    theme:"beige" },
-  { name:"Agora Pulse",              desc:"Verktyg för social media management och rapportering.",                               category:"planering",    url:"https://www.agorapulse.com/",                                    icon:"chart",    theme:"beige" },
+  { name:"Budgetkollen",             desc:"Realtidsöversikt av kampanjbudgetar.",                                               category:["planering","foundation","ai-appar"], url:null,                                                             icon:"budget",   theme:"beige" },
+  { name:"Reach Planner",            desc:"Beräkna räckvidd för mediakampanjer över flera kanaler.",                           category:["planering","ai-appar"],   url:"https://nilshellscream.github.io/Scream-Reach-Planner/",         icon:"target",   theme:"beige" },
+  { name:"Meta Reach Planner",       desc:"Hämta räckvidsdata för Meta direkt i appen.",                                       category:["planering","ai-appar"],   url:"https://nilshellscream.github.io/scream-meta-reachplanner/",    icon:"target",   theme:"beige" },
+  { name:"Kolsquare",                desc:"Influencer-plattform för planering och analys.",                                    category:["planering","kampanj"],    url:"https://www.kolsquare.com/en/influencer-marketing-platform",     icon:"users",    theme:"beige" },
+  { name:"Agora Pulse",              desc:"Verktyg för social media management och rapportering.",                               category:["planering","kampanj"],    url:"https://www.agorapulse.com/",                                    icon:"chart",    theme:"beige" },
 
-  /* ── Kampanjaktivering ── */
-  { name:"BudgetGuardian",           desc:"Chrome-extension för att begränsa publicering av Meta-kampanjer med daglig budget.",category:"kampanj",      url:null,                                                             icon:"shield",   theme:"coral" },
-  { name:"Meta Preview link tool",   desc:"Hämta korrlänar i bulk och exportera.",                                             category:"kampanj",      url:"https://nilshellscream.github.io/meta-preview-tool/",            icon:"link",     theme:"coral" },
-  { name:"Annonsgranskare",          desc:"AI-driven granskning av annonsmaterial.",                                           category:"kampanj",      url:"https://sem.scream.se/",                                         icon:"shield",   theme:"coral" },
+  /* ── Kampanjhantering ── */
+  { name:"BudgetGuardian",           desc:"Chrome-extension för att begränsa publicering av Meta-kampanjer med daglig budget.",category:["kampanj","ai-appar"],     url:null,                                                             icon:"shield",   theme:"coral" },
+  { name:"Meta Preview link tool",   desc:"Hämta korrlänar i bulk och exportera.",                                             category:["kampanj","ai-appar"],     url:"https://nilshellscream.github.io/meta-preview-tool/",            icon:"link",     theme:"coral" },
+  { name:"SEM Annonsgranskare",          desc:"AI-driven granskning av annonsmaterial.",                                           category:["kampanj","foundation","ai-appar"], url:"https://sem.scream.se/",                                         icon:"shield",   theme:"coral" },
+  { name:"Campaign Hub",             desc:"Intern administration av kampanjer.",                                                 category:"kampanj",                  url:"https://hub.systems.mediafamily.se/#/",                          icon:"budget",   theme:"coral" },
 
   /* ── Innehåll & Kreativ ── */
-  { name:"Annonscopy",               desc:"Generera annonstexter med AI-stöd.",                                                category:"innehall",     url:null,                                                             icon:"bulb",     theme:"beige" },
-  { name:"Neurons",                  desc:"AI-driven kreativ analys och optimering av annonsmaterial.",                         category:["innehall","foundation"]     url:"https://app.neuronsinc.com/",                                    icon:"zap",      theme:"beige" },
+  { name:"Annonscopy",               desc:"Generera annonstexter med AI-stöd.",                                                category:["innehall","ai-appar"],    url:null,                                                             icon:"bulb",     theme:"beige" },
+  { name:"Neurons",                  desc:"AI-driven kreativ analys och optimering av annonsmaterial.",                         category:"innehall",     url:"https://app.neuronsinc.com/",                                    icon:"zap",      theme:"beige" },
 
   /* ── Interna system & Styrning ── */
   { name:"Sync",                          desc:"Resursplaneringsverktyg för interna team.",                                    category:"interna",      url:"https://sync.scream.se/#/",                                      icon:"refresh",  theme:"mint"  },
   { name:"Wellfish Hållbarhetssystem",    desc:"System för hållbarhetsrapportering och uppföljning.",                         category:"interna",      url:"https://wellfish.se/",                                           icon:"leaf",     theme:"mint"  },
   { name:"CheckOut",                      desc:"Diskussionsunderlag för Kundteams feedback/workshop.",                        category:"interna",      url:"https://claude.ai/artifacts/latest/428b8610-05de-4a85-b426-53ce24292b20", icon:"chat", theme:"mint" },
-  { name:"TTPA Checker",                  desc:"Verktyg för att ställa frågor kring TTPA/politisk annonsering.",             category:"interna",      url:"https://claude.ai/artifacts/latest/162e9280-0f51-4a36-bf19-0237614cc342", icon:"check", theme:"mint" },
+  { name:"TTPA Checker",                  desc:"Verktyg för att ställa frågor kring TTPA/politisk annonsering.",             category:["interna","ai-appar"],     url:"https://claude.ai/artifacts/latest/162e9280-0f51-4a36-bf19-0237614cc342", icon:"check", theme:"mint" },
 
   /* ── AI-appar ── */
   { name:"InfluenceScore",           desc:"Verktyg för att bedöma influencers.",                                               category:"ai-appar",     url:"https://emc-earned-media-score.vercel.app/",                     icon:"star",     theme:"mint"  },
 
   /* ── Kundspecifik utveckling ── */
-  { name:"Coop store list",          desc:"Interaktiv app för att filtrera bland 800+ Coop-butiker.",                          category:"kundspecifik", url:"https://nilshellscream.github.io/Coop-store-list/",              icon:"store",    theme:"coral" },
+  { name:"Coop store list",          desc:"Interaktiv app för att filtrera bland 800+ Coop-butiker.",                          category:["kundspecifik","ai-appar"], url:"https://nilshellscream.github.io/Coop-store-list/",              icon:"store",    theme:"coral" },
 ];
 
 /* SVG-ikoner */
